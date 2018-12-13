@@ -1,0 +1,6 @@
+frontend/.next
+frontend/.vscode
+frontend/node_modules
+
+backend/.vscode
+backend/node_modules
