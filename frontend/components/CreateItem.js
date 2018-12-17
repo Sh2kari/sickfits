@@ -48,20 +48,22 @@ class CreateItem extends Component {
     data.append('file', files[0]);
     data.append('upload_preset', 'sickfits');
 
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dthrym5fm/image/upload',
-      {
-        method: 'post',
-        body: data
-      }
-    );
+    if (files && files.length > 0) {
+      const res = await fetch(
+        'https://api.cloudinary.com/v1_1/dthrym5fm/image/upload',
+        {
+          method: 'post',
+          body: data
+        }
+      );
 
-    const file = await res.json();
+      const file = await res.json();
 
-    this.setState({
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url
-    });
+      this.setState({
+        image: file.secure_url,
+        largeImage: file.eager[0].secure_url
+      });
+    }
   };
 
   render() {
